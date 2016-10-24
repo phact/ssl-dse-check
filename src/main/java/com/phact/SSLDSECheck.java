@@ -25,9 +25,16 @@ public class SSLDSECheck {
             DSECluster cluster = new DSECluster(contactPoints, truststore);
         }
         else{
+            String javaHome = System.getProperty("java.home");
             System.out.println("You do not have JCE installed.");
             System.out.println("Your java version: "+ System.getProperty("java.version"));
-            System.out.println("Your java home is: " + System.getProperty("java.home"));
+            System.out.println("Your java home is: " + javaHome + "\n");
+            System.out.println("Please install it by doing the following: ");
+            System.out.println(" wget --no-check-certificate --no-cookies --header \"Cookie: oraclelicense=accept-securebackup-cookie\" \"http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip\"");
+            System.out.println(" unzip jce_policy-8.zip");
+            System.out.println(" mv UnlimitedJCEPolicyJDK8/*.jar " + javaHome +  "/jre/lib/security/"+"\n");
+            System.out.println("and try again!");
+
         }
     }
 
